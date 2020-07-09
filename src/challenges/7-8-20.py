@@ -9,8 +9,8 @@ def sum_mins(arr):
     smallest = 0
     for inner_array in arr:
         # find min for each inner array
+        # sum all the smallests from the inner array and return
         smallest += min(inner_array)
-    # sum all the smallests from the inner array and return
     return smallest
 
 
