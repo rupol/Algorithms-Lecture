@@ -1,3 +1,7 @@
+import timeit
+import functools
+
+
 # write a function that prints every number from n to zero
 # iterative approach
 def print_numbers(n):
@@ -44,6 +48,20 @@ def double_print_num(n):  # O(2^n)
 # at n = 1, Fib(1) = 1
 # this is obviously recursion!
 
+# def memoize(func):
+#     cache = dict()
+
+#     def memoized_func(*args):
+#         if args in cache:
+#             return cache[args]
+#         result = func(*args)
+#         cache[args] = result
+#         return result
+
+#     return memoized_func
+
+
+@functools.lru_cache(maxsize=128)
 def fib(n):
     # base case (doesn't go into recursion)
     if n == 0:
@@ -55,11 +73,15 @@ def fib(n):
     return result
 
 
-print(fib(1))
-print(fib(2))
-print(fib(3))
-print(fib(4))
-print(fib(5))
-print(fib(6))
-print(fib(7))
-print(fib(8))
+# print(fib(1))
+# print(fib(2))
+# print(fib(3))
+# print(fib(4))
+# print(fib(5))
+# print(fib(6))
+# print(fib(7))
+# print(fib(8))
+print(fib(35))
+print(timeit.timeit('fib(35)', globals=globals(), number=1))
+# print(memoize(fib(35)))
+# print(timeit.timeit('memoize(fib(35))', globals=globals(), number=1))
